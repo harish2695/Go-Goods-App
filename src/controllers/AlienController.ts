@@ -26,6 +26,7 @@ class AlienController {
 	async getAll(req: any, res: any) {
 		try {
 			const alien = await Alien.find();
+            const a = await Alien.find()
 			res.json(alien);
 		} catch (error) {
 			res.send('Error' + error);

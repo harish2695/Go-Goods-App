@@ -8,7 +8,8 @@ const albumSchema =  new mongoose.Schema({
     },
     artist: String,
     totalSongs: String,
-    songs:[]
+    songs:[{type:mongoose.Schema.Types.ObjectId, ref:"Music"}],
+    price: String
 })
 
-export default mongoose.model('Alien',albumSchema)
+export default mongoose.model('Album',albumSchema)
