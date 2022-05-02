@@ -1,5 +1,6 @@
+import server from './config';
 import './config/database'
-import server from './config/server';
+
 
 
 const PORT = process.env.PORT || 9000;

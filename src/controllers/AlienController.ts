@@ -1,4 +1,7 @@
 import Alien from '../models/alien';
+import { HydratedDocument } from 'mongoose';
+import {Request,Response} from 'express'
+import { IAlien } from '../interfaces/IAlien';
 
 // export const getMusic = async (req, res) => {
 //     try {
@@ -19,13 +22,14 @@ import Alien from '../models/alien';
 //     }
 // }
 
+
 class AlienController {
 	constructor() {
     }
 
-	async getAll(req: any, res: any) {
+	async getAll(req: Request, res: Response) {
 		try {
-			const alien = await Alien.find();
+			const alien:IAlien[] = await Alien.find();
             const a = await Alien.find()
 			res.json(alien);
 		} catch (error) {
@@ -33,8 +37,8 @@ class AlienController {
 		}
 	}
 
-    async add(req: any, res: any) {
-        const alien = new Alien({
+    async add(req: Request, res: Response) {
+        const alien : HydratedDocument<IAlien>= new Alien({
             name: req.body.name,
             tech:req.body.tech,
             sub:req.body.sub
@@ -47,7 +51,7 @@ class AlienController {
         }
 	}
 
-     async findById(req:any,res:any) {
+     async findById(req:Request,res: Response) {
         try {
             const alien = await Alien.findById(req.params.id)
             res.json(alien)

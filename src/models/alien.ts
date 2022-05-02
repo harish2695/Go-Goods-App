@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
+import { IAlien } from '../interfaces/IAlien';
 
-const alienSchema =  new mongoose.Schema({
+const alienSchema =  new mongoose.Schema<IAlien>({
 
     name:{
         type: String,
@@ -17,4 +18,4 @@ const alienSchema =  new mongoose.Schema({
     }
 })
 
-export default mongoose.model('Alien',alienSchema)
+export default mongoose.model<IAlien>('Alien',alienSchema)
