@@ -2,6 +2,8 @@ import Alien from '../models/alien';
 import { HydratedDocument } from 'mongoose';
 import {Request,Response} from 'express'
 import { IAlien } from '../interfaces/IAlien';
+import generateErrorResponse from '../helpers/response.error';
+import generateSuccessResponse from '../helpers/response.success';
 
 // export const getMusic = async (req, res) => {
 //     try {
@@ -29,10 +31,12 @@ class AlienController {
 
 	async getAll(req: Request, res: Response) {
 		try {
-			const alien:IAlien[] = await Alien.find(req.params.id?{"_id":`${req.params.id}`}:{});
-			res.json(alien);
+			const alien:IAlien[] = await Alien.find({"_id":"dfdfd"});
+            const a = generateSuccessResponse(alien)
+			res.json(a);
 		} catch (error) {
-			res.send('Error' + error);
+            const response = generateErrorResponse(error)
+			res.json(response)
 		}
 	}
 
