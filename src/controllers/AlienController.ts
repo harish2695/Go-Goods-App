@@ -29,8 +29,7 @@ class AlienController {
 
 	async getAll(req: Request, res: Response) {
 		try {
-			const alien:IAlien[] = await Alien.find();
-            const a = await Alien.find()
+			const alien:IAlien[] = await Alien.find(req.params.id?{"_id":`${req.params.id}`}:{});
 			res.json(alien);
 		} catch (error) {
 			res.send('Error' + error);
